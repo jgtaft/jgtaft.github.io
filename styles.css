@@ -1,0 +1,59 @@
+body {
+  margin: 30px;
+  font-family:'Lora',serif;
+}
+h1 {
+  font-size: 30;
+  font-family:'Oswald', sans-serif;
+}
+ul {
+  list-style-type: none;
+}
+li {
+  padding:5px;
+}
+
+.contact {
+}
+.workcontainer {
+  display: flex;
+  width:90%;
+  flex-direction: column;
+}
+.othercontainer {
+  display: flex;
+  width:90%;
+  flex-direction: column;
+}
+.section {
+  font-size: 25px;
+  margin-top: 30px;
+  font-family:'Oswald', sans-serif;
+}
+.job {
+  float:left;
+}
+.title {
+  font-size: 20px;
+  font-family:'Oswald';
+}
+.place {
+  float:right;
+}
+.dates {
+  float:left;
+}
+.desc {
+  float:left;
+  clear:both;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.workcontainer ul {
+  clear: both;
+  list-style-type: circle;
+}
+.workcontainer li {
+  margin-left: 20px;
+  padding: 0px;
+}
