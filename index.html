@@ -1,45 +1,98 @@
 <!doctype html>
-<title>small webby boi</title>
-<style>
-body{
-  height:100%;
-}
-*{
-  box-sizing:border-box;
-}
-.container {
-  display: flex;
-  align-content:center;
-  color:white;
-  width:100%;
-  height: 100%;
-}
-.container div{
-  flex:1;
-  margin: .3em;
-  margin-top: 2em;
-  padding: .5em;
-  font-size: 50px;
-}
-.name {
-  background: #FDB44B;
-}
-.words {
-  background: #91CEFF;
-}
-.code {
-  background: #0060CA;
-}
-.textiles {
-  background: #090089;
-}
+<head>
+  <title>small webby boi</title>
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Lora|Muli" rel="stylesheet">
+  <script src="https://unpkg.com/web-animations-js@2.3.1/web-animations.min.js"></script>
+  <script src="https://unpkg.com/muuri@0.7.1/dist/muuri.min.js"></script>
 
-</style>
+</head>
+
 <body>
-<div class="container">
-  <div class="name">JESSIE<BR/><small>GARRETT</small><BR/>TAFT</div>
-  <div class="words">words</div>
-  <div class="code">code</div>
-  <div class="textiles">textiles</div>
+<h1>Jessie Garrett Taft | Projects</h1>
+<a href="cv.html">Curriculum Vitae</a><br/>
+<a href="https://twitter.com/fiesta_jets">Twitter</a><br/>
+<a href="https://github.com/jgtaft">GitHub</a>
+<section class="grid-wrapper">
+<div class="filter-controls">
+  <div class="control">Filter Projects
+    <select class="filter-field form-control">
+      <option value="">all</option>
+      <option value="research">research</option>
+      <option value="code">code</option>
+      <option value="art">art</option>
+    </select>
+  </div>
 </div>
+
+<div class="grid">
+
+  <div class="item" type="research">
+    <div class="item-content">
+      <a style="display:block" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3244459">
+      <div>
+        <img src="graphics/dbd.jpg" width=350>
+        <div class="itemtitle">Debiasing Desire: Addressing Bias and Descrimination on Intimate Platforms</div>
+        <div class="itemdesc">We argue that the power of design to exacerbate discrimination and other harms on dating sites needs more consideration. Co-authored with others at Cornell Information Science, presented at CSCW 2018.</div>
+      </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="item" type="code">
+    <div class="item-content">
+      <a style="display:block" href="https://jgtaft.github.io/hst/">
+      <div>
+        <img src="graphics/hst.png" width=350>
+        <div class="itemtitle">HST Generator</div>
+        <div class="itemdesc">A tiny project to generate half-square-triangle patterns of varying size and symmetry.</div>
+      </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="item" type="code">
+    <div class="item-content">
+      <a style="display:block" href="https://jgtaft.github.io/crossblocks/">
+      <div>
+        <img src="graphics/crossblocks.png" width=350>
+        <div class="itemtitle">Crossblocks</div>
+        <div class="itemdesc">A tiny project to create a random grid of black and white squares for craft purposes. </div>
+      </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+</section>
+<script>
+//adapted from https://codepen.io/digistate/pen/KZwLVL
+document.addEventListener('DOMContentLoaded', function () {
+  var grid = null,
+      wrapper = document.querySelector('.grid-wrapper'),
+      filterField = wrapper.querySelector('.filter-field'),
+      gridElem = wrapper.querySelector('.grid'),
+      filterAttr = 'type',
+      filterFieldValue = [];
+
+  // Init the grid layout
+  grid = new Muuri('.grid');
+
+  // Set inital search active filter.
+  filterFieldValue = filterField.value;
+
+  // Filter field event binding
+  filterField.addEventListener('change', filter);
+
+  // Filtering
+  function filter() {
+    filterFieldValue = filterField.value;
+    grid.filter(function (item) {
+      var element = item.getElement(),
+          isFilterMatch = !filterFieldValue ? true : (element.getAttribute(filterAttr) || '') === filterFieldValue;
+      return isFilterMatch;
+    });
+  }
+});
+</script>
 </body>
